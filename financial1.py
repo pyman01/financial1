@@ -12,7 +12,7 @@ laufzeit = raw_input()
 def zins(sKapital, zinssatz, laufzeit, currentYear):
     zSum = sKapital 
     if currentYear <= laufzeit:
-        sKapital += (sKapital/100)*zinssatz
+        sKapital += (sKapital/100) * zinssatz
         currentYear += 1 
         #print "Jahr: " + str(currentYear) + " " + str(sKapital) + " euro"
         return zins(sKapital, zinssatz, laufzeit, currentYear)
