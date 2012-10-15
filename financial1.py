@@ -6,7 +6,7 @@ def zins(sKapital, zinssatz, laufzeit, currentYear):
     if currentYear <= laufzeit:
         # Zinsen addieren
         sKapital += (sKapital/100) * zinssatz
-        print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(sKapital) + " Euro"
+        print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(round(sKapital, 2)) + " Euro"
         currentYear += 1 
         return zins(sKapital, zinssatz, laufzeit, currentYear)
     return str(zSum)
