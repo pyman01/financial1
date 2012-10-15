@@ -1,4 +1,4 @@
-# !/bin/python
+#! /usr/bin/env python
 
 def zins(sKapital, zinssatz, laufzeit, currentYear):
     zSum = sKapital
