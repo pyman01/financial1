@@ -1,22 +1,19 @@
 # !/bin/python
 
-print "Startkapital in euro eingeben:"
-sKapital = raw_input()
-
-print "Zinssatz in Prozent (z.B. 5) eingeben:"
-zinssatz = raw_input()
-
-print "Laufzeit in Jahren eingeben:"
-laufzeit = raw_input()
-
 def zins(sKapital, zinssatz, laufzeit, currentYear):
-    zSum = sKapital 
+    zSum = sKapital
+    # Ende der Laufzeit erreicht?
     if currentYear <= laufzeit:
+        # Zinsen addieren
         sKapital += (sKapital/100)*zinssatz
+        print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(sKapital) + " Euro"
         currentYear += 1 
-        #print "Jahr: " + str(currentYear) + " " + str(sKapital) + " euro"
         return zins(sKapital, zinssatz, laufzeit, currentYear)
-    return zSum
+    return str(zSum)
 
-print int(zins(float(sKapital), int(zinssatz), int(laufzeit), 1))
+sKapital = float(raw_input("Startkapital in Euro eingeben: "))
+zinssatz = float(raw_input("Zinssatz in Prozent p.a. eingeben: "))
+laufzeit = int(raw_input("Laufzeit in Jahren eingeben: "))
+
+print "Summe am Ende der Laufzeit: " + zins(sKapital, zinssatz, laufzeit, 1) + " Euro"
 
