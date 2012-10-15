@@ -1,5 +1,5 @@
 # !/bin/python
-
+###
 print "Startkapital in euro eingeben:"
 sKapital = raw_input()
 print "Zinssatz in Prozent (z.B. 5) eingeben:"
