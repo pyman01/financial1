@@ -1,4 +1,6 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
+
+import sys
 
 def zins(sKapital, zinssatz, laufzeit, currentYear):
     zSum = sKapital
@@ -11,9 +13,30 @@ def zins(sKapital, zinssatz, laufzeit, currentYear):
         return zins(sKapital, zinssatz, laufzeit, currentYear)
     return zSum
 
-sKapital = float(raw_input("Startkapital in Euro eingeben: "))
-zinssatz = float(raw_input("Zinssatz in Prozent p.a. eingeben: "))
-laufzeit = int(raw_input("Laufzeit in Jahren eingeben: "))
+# Startkapital
+if len(sys.argv) >= 2:
+        sKapital = sys.argv[1]
+        print "Startkapital ist", sKapital, "Euro"
+else:
+        sKapital = raw_input("Startkapital in Euro eingeben: ")
+sKapital = float(sKapital)
 
+# Zinssatz
+if len(sys.argv) >= 3:
+        zinssatz = sys.argv[2]
+        print "Zinssatz ist", zinssatz, "Prozent p.a."
+else:
+        zinssatz = raw_input("Zinssatz in Prozent p.a. eingeben: ")
+zinssatz = float(zinssatz)
+
+# Laufzeit
+if len(sys.argv) >= 4:
+        laufzeit = sys.argv[3]
+        print "Laufzeit ist", laufzeit, "Jahre"
+else:
+        laufzeit = raw_input("Laufzeit in Jahren eingeben: ")
+laufzeit = int(laufzeit)
+
+# Berechnung
 print "Summe am Ende der Laufzeit: " + str(round(zins(sKapital, zinssatz, laufzeit, 1), 2)) + " Euro"
 
