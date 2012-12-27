@@ -33,26 +33,26 @@ if "-o" in sys.argv:
 
 # Startkapital
 if len(sys.argv) >= 2:
-        sKapital = sys.argv[1]
-        print "Startkapital ist", sKapital, "Euro"
+    sKapital = sys.argv[1]
+    print "Startkapital ist", sKapital, "Euro"
 else:
-        sKapital = raw_input("Startkapital in Euro eingeben: ")
+    sKapital = raw_input("Startkapital in Euro eingeben: ")
 sKapital = float(sKapital)
 
 # Zinssatz
 if len(sys.argv) >= 3:
-        zinssatz = sys.argv[2]
-        print "Zinssatz ist", zinssatz, "Prozent p.a."
+    zinssatz = sys.argv[2]
+    print "Zinssatz ist", zinssatz, "Prozent p.a."
 else:
-        zinssatz = raw_input("Zinssatz in Prozent p.a. eingeben: ")
+    zinssatz = raw_input("Zinssatz in Prozent p.a. eingeben: ")
 zinssatz = float(zinssatz)
 
 # Laufzeit
 if len(sys.argv) >= 4:
-        laufzeit = sys.argv[3]
-        print "Laufzeit ist", laufzeit, "Jahre"
+    laufzeit = sys.argv[3]
+    print "Laufzeit ist", laufzeit, "Jahre"
 else:
-        laufzeit = raw_input("Laufzeit in Jahren eingeben: ")
+    laufzeit = raw_input("Laufzeit in Jahren eingeben: ")
 laufzeit = int(laufzeit)
 
 # Berechnung
