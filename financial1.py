@@ -10,18 +10,16 @@ import sys
 # Ermittelte Werte als Datei (raus)schreiben? als boolean
 fileOutput = False
 
-def zins(sKapital, zinssatz, laufzeit, currentYear):
+def zins(sKapital, zinssatz, laufzeit, currentYear, fileHandle):
     # Ende der Laufzeit erreicht?
     if currentYear > laufzeit:
         return sKapital
     # Zinsen addieren
     sKapital += (sKapital/100) * zinssatz
-    if fileOutput:
-        datfile = open(str(zinssatz)+"pa.dat", "a")
-        datfile.write(str(currentYear)+" "+str(sKapital)+"\n")
-        datfile.close()
+    if fileHandle != None:
+        fileHandle.write(str(currentYear)+" "+str(sKapital)+"\n")
     print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(round(sKapital, 2)) + " Euro"
-    return zins(sKapital, zinssatz, laufzeit, 1+currentYear)
+    return zins(sKapital, zinssatz, laufzeit, 1+currentYear, fileHandle)
 
 # Einstellungsparameter?
 if "-h" in sys.argv:
@@ -58,5 +56,13 @@ else:
 laufzeit = int(laufzeit)
 
 # Berechnung
-print "Summe am Ende der Laufzeit: " + str(round(zins(sKapital, zinssatz, laufzeit, 1), 2)) + " Euro"
+if fileOutput:
+    datfile = open(str(zinssatz)+"pa.dat", "a") # append
+else:
+    datfile = None
+
+print "Summe am Ende der Laufzeit: " + str(round(zins(sKapital, zinssatz, laufzeit, 1, fileHandle=datfile), 2)) + " Euro"
+
+if fileOutput:
+    datfile.close()
 
