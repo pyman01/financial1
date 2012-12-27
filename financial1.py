@@ -1,26 +1,37 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """financial1 [Startkapital] [Zinssatz p.a.] [Laufzeit in Jahren]
-        -h      Diesen "Docstring"-Text anzeigen
+        -h      help, diesen "Docstring"-Text anzeigen
+        -o      output, Werte in Datei schreiben
 """
 
 import sys
 
+# Ermittelte Werte als Datei (raus)schreiben? als boolean
+fileOutput = False
+
 def zins(sKapital, zinssatz, laufzeit, currentYear):
-    zSum = sKapital
     # Ende der Laufzeit erreicht?
-    if currentYear <= laufzeit:
-        # Zinsen addieren
-        sKapital += (sKapital/100) * zinssatz
-        print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(round(sKapital, 2)) + " Euro"
-        currentYear += 1 
-        return zins(sKapital, zinssatz, laufzeit, currentYear)
-    return zSum
+    if currentYear > laufzeit:
+        return sKapital
+    # Zinsen addieren
+    sKapital += (sKapital/100) * zinssatz
+    if fileOutput:
+        datfile = open(str(zinssatz)+"pa.dat", "a")
+        datfile.write(str(currentYear)+" "+str(sKapital)+"\n")
+        datfile.close()
+    print "Summe am Ende des " + str(currentYear) + ". Jahres: " + str(round(sKapital, 2)) + " Euro"
+    return zins(sKapital, zinssatz, laufzeit, 1+currentYear)
 
 # Einstellungsparameter?
 if "-h" in sys.argv:
+    """Hilfetext anzeigen"""
     print __doc__
     sys.exit()
+
+if "-o" in sys.argv:
+    """Ermittelte Werte als Datei (raus)schreiben"""
+    fileOutput = True
 
 # Startkapital
 if len(sys.argv) >= 2:
