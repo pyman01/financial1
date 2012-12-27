@@ -19,8 +19,8 @@ def zins(sKapital, zinssatz, laufzeit, currentYear):
 
 # Einstellungsparameter?
 if "-h" in sys.argv:
-        print __doc__
-        exit()
+    print __doc__
+    sys.exit()
 
 # Startkapital
 if len(sys.argv) >= 2:
