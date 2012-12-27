@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""financial1 [Startkapital] [Zinssatz p.a.] [Laufzeit in Jahren]
+        -h      Diesen "Docstring"-Text anzeigen
+"""
 
 import sys
 
@@ -12,6 +16,11 @@ def zins(sKapital, zinssatz, laufzeit, currentYear):
         currentYear += 1 
         return zins(sKapital, zinssatz, laufzeit, currentYear)
     return zSum
+
+# Einstellungsparameter?
+if "-h" in sys.argv:
+        print __doc__
+        exit()
 
 # Startkapital
 if len(sys.argv) >= 2:
