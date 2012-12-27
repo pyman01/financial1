@@ -57,7 +57,7 @@ laufzeit = int(laufzeit)
 
 # Berechnung
 if fileOutput:
-    datfile = open(str(zinssatz)+"pa.dat", "a") # append
+    datfile = open(str(zinssatz)+"pa.dat", "w") # new file
 else:
     datfile = None
 
