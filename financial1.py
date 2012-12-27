@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """financial1 [Startkapital] [Zinssatz p.a.] [Laufzeit in Jahren]
         -h      help, diesen "Docstring"-Text anzeigen
-        -o      output, Werte in Datei schreiben
+        -o      output, Werte als Datei (raus)schreiben
 """
 
 import sys
