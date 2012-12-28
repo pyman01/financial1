@@ -1,2 +1,5 @@
 |x| gnuplot mit *.dat aufrufen als neuer Parameter -p(lot)
+
 |_| Bei Aufruf nur mit zB -o soll Restinfo erfragt werden
+|_| Englisch als weitere Sprache anbieten, ggf irgendein python multilang tool benutzen
+

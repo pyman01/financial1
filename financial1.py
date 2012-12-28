@@ -49,7 +49,11 @@ if "-p" in sys.argv:
     plotCommand = "" # '5.0pa.dat' with line, '6.0pa.dat' with line
     for i, f in enumerate(datFiles):
         if 0 == i: # first iteration
-            plotCommand += "echo \"plot '"+f+"' with line, "
+            plotCommand += "echo \"plot '"+f+"' with line "
+            if len(datFiles)-1 == i: # first is also last iteration?
+                plotCommand += '" | gnuplot -persist'
+            else:
+                plotCommand += ", "
         elif len(datFiles)-1 == i: # last iteration
             plotCommand += "'"+f+"' with line "+'" | gnuplot -persist'
         else: # middle iteration/s
