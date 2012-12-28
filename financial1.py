@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """financial1 [Startkapital] [Zinssatz p.a.] [Laufzeit in Jahren]
-        -h      help, diesen "Docstring"-Text anzeigen
-        -o      output, Werte als Datei (raus)schreiben
+    -h    help, diesen "Docstring"-Text anzeigen
+    -o    output, Werte als Datei (raus)schreiben
+    -p    plot, (vorher mit -o generierte) *.dat Dateien zur Darstellung an gnuplot weiterreichen
+
+Beispiel der Anlage von 5 Euro bei 2 bzw 3 Prozent Zinsen auf 50 Jahre:
+$ ./financial1.py 5 2 50 -o
+$ ./financial1.py 5 3 50 -o
+$ ./financial1.py -p
 """
 
 import sys
@@ -30,6 +36,29 @@ if "-h" in sys.argv:
 if "-o" in sys.argv:
     """Ermittelte Werte als Datei (raus)schreiben"""
     fileOutput = True
+
+if "-p" in sys.argv:
+    """plot, *.dat Dateien zur Darstellung an gnuplot weiterreichen"""
+    # Seek dat files
+    import glob
+    datFiles = glob.glob("*.dat")
+    if 0 == len(datFiles):
+        print "Fehler: Keine dat Dateien gefunden"
+        sys.exit()
+    # Form plot command
+    plotCommand = "" # '5.0pa.dat' with line, '6.0pa.dat' with line
+    for i, f in enumerate(datFiles):
+        if 0 == i: # first iteration
+            plotCommand += "echo \"plot '"+f+"' with line, "
+        elif len(datFiles)-1 == i: # last iteration
+            plotCommand += "'"+f+"' with line "+'" | gnuplot -persist'
+        else: # middle iteration/s
+            plotCommand += "'"+f+"' with line, "
+    #print "plot command is >>"+plotCommand+"<<"
+    # Execute plot command
+    import os
+    os.system(plotCommand)
+    sys.exit()
 
 # Startkapital
 if len(sys.argv) >= 2:

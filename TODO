@@ -1,0 +1,2 @@
+|x| gnuplot mit *.dat aufrufen als neuer Parameter -p(lot)
+|_| Bei Aufruf nur mit zB -o soll Restinfo erfragt werden
