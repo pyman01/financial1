@@ -14,7 +14,7 @@ $ ./financial1.py -p
 import sys
 
 # Ermittelte Werte als Datei (raus)schreiben? als boolean
-fileOutput = False
+isFileOutput = False
 
 def zins(sKapital, zinssatz, laufzeit, currentYear, fileHandle):
     # Ende der Laufzeit erreicht?
@@ -35,7 +35,7 @@ if "-h" in sys.argv:
 
 if "-o" in sys.argv:
     """Ermittelte Werte als Datei (raus)schreiben"""
-    fileOutput = True
+    isFileOutput = True
 
 if "-p" in sys.argv:
     """plot, *.dat Dateien zur Darstellung an gnuplot weiterreichen"""
@@ -89,13 +89,13 @@ else:
 laufzeit = int(laufzeit)
 
 # Berechnung
-if fileOutput:
+if isFileOutput:
     datfile = open(str(zinssatz)+"pa.dat", "w") # new file
 else:
     datfile = None
 
 print "Summe am Ende der Laufzeit: " + str(round(zins(sKapital, zinssatz, laufzeit, 1, fileHandle=datfile), 2)) + " Euro"
 
-if fileOutput:
+if isFileOutput:
     datfile.close()
 
